@@ -27,6 +27,34 @@ const PROJECTS = {
     desc: "Built out 100 programmatic SEO pages inside Webflow's CMS for Jem Social — a structured collection system designed to scale content without manual page-building.",
     img: null,
     link: "work/jem-social.html"
+  },
+  bokt: {
+    title: "Bokt",
+    tags: ["Webflow", "Client project", "Lead-gen SaaS"],
+    desc: "A 24/7 call-answering and Google ranking system for home service businesses — pricing tiers, ROI math, and a trade-specific features breakdown built to convert local business owners.",
+    img: "assets/work-bokt.jpg",
+    link: "https://bokt-updated-site.webflow.io/"
+  },
+  savora: {
+    title: "Savora Kitchen",
+    tags: ["Webflow", "Client project", "Hospitality"],
+    desc: "A fine-dining restaurant site — featured dishes, gallery, and reservation-focused layout built to match the warmth of the dining experience itself.",
+    img: "assets/work-savora.jpg",
+    link: "https://restaurant-landing-page-74592c.webflow.io/"
+  },
+  opsidesk: {
+    title: "Opsidesk",
+    tags: ["Webflow", "Client project", "Healthcare ops"],
+    desc: "A Spanish-language messaging and scheduling tool for private clinics — built around how appointment requests actually move from first message to confirmed visit.",
+    img: "assets/work-opsidesk.jpg",
+    link: "https://assignment-debd23.webflow.io/"
+  },
+  flowsync: {
+    title: "FlowSync",
+    tags: ["Webflow", "Client project", "SaaS"],
+    desc: "A SaaS marketing site with a full feature breakdown, integrations grid, and tiered pricing — built to walk a team-lead buyer from problem to sign-up.",
+    img: "assets/work-flowsync.jpg",
+    link: "https://saas-website-4e71d8.webflow.io/"
   }
 };
 
