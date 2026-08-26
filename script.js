@@ -55,6 +55,20 @@ const PROJECTS = {
     desc: "A SaaS marketing site with a full feature breakdown, integrations grid, and tiered pricing — built to walk a team-lead buyer from problem to sign-up.",
     img: "assets/work-flowsync.jpg",
     link: "https://saas-website-4e71d8.webflow.io/"
+  },
+  ogc: {
+    title: "Outdoor Grilling Company",
+    tags: ["Webflow", "Client project", "Hospitality / Catering"],
+    desc: "A BBQ catering site for a Phoenix-based business — service breakdowns, real customer reviews, an events section, and vendor partnerships, all built around getting a quote fast.",
+    img: "assets/work-ogc.jpg",
+    link: "https://www.outdoorgrillingcompanybbq.com/"
+  },
+  callivate: {
+    title: "Callivate",
+    tags: ["Framer", "Client project", "Fitness / Wellness"],
+    desc: "A personalised-workout subscription site for women, built in Framer with a Tally-powered intake quiz built directly into the flow — from landing page straight into lead capture.",
+    img: "assets/work-callivate.jpg",
+    link: "https://funky-triangle-913670.framer.app/"
   }
 };
 
