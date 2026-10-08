@@ -12,6 +12,6 @@ Plain HTML/CSS/JS, no build step needed.
 
 ## Before going live
 
-- Replace `YOUR_FORM_ID` in `index.html` (search for `formspree.io/f/`) with your real Formspree form ID — sign up free at formspree.io, create a form, and it'll give you the ID.
+- The Formspree form ID is already set in `index.html`. Submissions go to the email you used on formspree.io.
 - Swap the placeholder work-card links/screenshots for any additional real projects as you get them.
 - Double check every contact link (Fiverr, LinkedIn, Upwork, X) still points to the right place.

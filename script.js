@@ -63,6 +63,13 @@ const PROJECTS = {
     img: "assets/work-ogc.jpg",
     link: "https://www.outdoorgrillingcompanybbq.com/"
   },
+  jurisgenius: {
+    title: "JurisGenius",
+    tags: ["Webflow", "Client project", "Legal SaaS"],
+    desc: "A marketing site for an AI contract-review tool: a risk-ranked product preview in the hero, a features grid, tiered pricing, and a resources section, built to take legal teams from first look to free trial.",
+    img: "assets/work-jurisgenius.jpg",
+    link: "https://jgs-awesome-site.webflow.io/"
+  },
   callivate: {
     title: "Callivate",
     tags: ["Framer", "Client project", "Fitness / Wellness"],
@@ -167,4 +174,29 @@ if (form) {
       status.textContent = "Something went wrong — please email me directly instead.";
     }
   });
+}
+
+// ===== Work filter tabs =====
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.work-card').forEach(card => {
+      card.classList.toggle('hidden', f !== 'all' && card.dataset.cat !== f);
+    });
+  });
+});
+
+// ===== Floating "Hire me" button: show after scrolling past hero, hide at contact =====
+const fab = document.getElementById('fab');
+const contactSec = document.getElementById('contact');
+if (fab && contactSec) {
+  const update = () => {
+    const pastHero = window.scrollY > 600;
+    const atContact = contactSec.getBoundingClientRect().top < window.innerHeight * 0.8;
+    fab.classList.toggle('show', pastHero && !atContact);
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 }
