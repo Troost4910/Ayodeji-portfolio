@@ -179,17 +179,36 @@ if (form) {
   });
 }
 
-// ===== Work filter tabs =====
+// ===== Work filter tabs + "View all" =====
+let workFilter = 'all';
+let workExpanded = false;
+const workCards = document.querySelectorAll('.work-card');
+const moreWrap = document.getElementById('work-more-wrap');
+const moreBtn = document.getElementById('work-more');
+
+function applyWork() {
+  workCards.forEach(card => {
+    const matches = workFilter === 'all' || card.dataset.cat === workFilter;
+    const collapsed = workFilter === 'all' && !workExpanded && card.classList.contains('extra');
+    card.classList.toggle('hidden', !matches || collapsed);
+  });
+  if (moreWrap) moreWrap.style.display = (workFilter === 'all' && !workExpanded) ? 'block' : 'none';
+}
+
+if (moreBtn) {
+  moreBtn.textContent = 'View all ' + workCards.length + ' projects';
+  moreBtn.addEventListener('click', () => { workExpanded = true; applyWork(); });
+}
+
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const f = btn.dataset.filter;
-    document.querySelectorAll('.work-card').forEach(card => {
-      card.classList.toggle('hidden', f !== 'all' && card.dataset.cat !== f);
-    });
+    workFilter = btn.dataset.filter;
+    applyWork();
   });
 });
+applyWork();
 
 // ===== Floating "Hire me" button: show after scrolling past hero, hide at contact =====
 const fab = document.getElementById('fab');

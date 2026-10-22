@@ -300,3 +300,14 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 }
 .fab.show{ opacity:1; pointer-events:auto; transform:none; }
 .fab:hover{ background:var(--ink-soft); }
+
+/* ============ Hero proof line ============ */
+.hero-proof{
+  display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center;
+  margin-top:36px; padding-top:22px; border-top:1px solid var(--line);
+  font-size:13.5px; font-weight:500; color:var(--ink-soft); max-width:46ch;
+}
+.hero-proof .dot{ color:var(--graphite); }
+
+/* ============ View all work ============ */
+.work-more{ text-align:center; margin-top:36px; }
