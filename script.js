@@ -90,29 +90,50 @@ const lbDesc = document.getElementById('lightbox-desc');
 const lbMeta = document.getElementById('lightbox-meta');
 const lbLink = document.getElementById('lightbox-link');
 
+let lbList = [];
+let lbIndex = 0;
+
+function renderProject() {
+  const key = lbList[lbIndex];
+  const p = PROJECTS[key];
+  if (!p) return;
+  lbTitle.textContent = p.title;
+  lbDesc.textContent = p.desc;
+  lbMeta.innerHTML = p.tags.map(t => `<span class="work-tag">${t}</span>`).join('');
+  lbLink.href = p.link;
+  lbLink.textContent = key === 'jemsocial' ? 'Read the full case study →' : 'View live site →';
+  if (p.img) {
+    lbImg.style.display = 'block';
+    lbImg.innerHTML = `<img src="${p.img}" alt="${p.title}">`;
+  } else {
+    lbImg.style.display = 'none';
+    lbImg.innerHTML = '';
+  }
+  const nav = document.getElementById('lightbox-nav');
+  nav.style.display = lbList.length > 1 ? 'flex' : 'none';
+  document.getElementById('lb-count').textContent = (lbIndex + 1) + ' / ' + lbList.length;
+}
+
+function stepProject(dir) {
+  if (lbList.length < 2) return;
+  lbIndex = (lbIndex + dir + lbList.length) % lbList.length;
+  renderProject();
+  lightbox.querySelector('.lightbox-inner').scrollTop = 0;
+}
+
 document.querySelectorAll('.work-card').forEach(card => {
   card.addEventListener('click', () => {
-    const key = card.getAttribute('data-project');
-    const p = PROJECTS[key];
-    if (!p) return;
-
-    lbTitle.textContent = p.title;
-    lbDesc.textContent = p.desc;
-    lbMeta.innerHTML = p.tags.map(t => `<span class="work-tag">${t}</span>`).join('');
-    lbLink.href = p.link;
-    lbLink.textContent = key === 'jemsocial' ? 'Read the full case study →' : 'View live site →';
-
-    if (p.img) {
-      lbImg.style.display = 'block';
-      lbImg.innerHTML = `<img src="${p.img}" alt="${p.title}">`;
-    } else {
-      lbImg.style.display = 'none';
-      lbImg.innerHTML = '';
-    }
-
+    // browse only the projects currently visible in the grid, in grid order
+    lbList = Array.from(document.querySelectorAll('.work-card:not(.hidden)')).map(c => c.getAttribute('data-project'));
+    lbIndex = lbList.indexOf(card.getAttribute('data-project'));
+    if (lbIndex < 0) return;
+    renderProject();
     lightbox.classList.add('open');
   });
 });
+
+document.getElementById('lb-prev').addEventListener('click', () => stepProject(-1));
+document.getElementById('lb-next').addEventListener('click', () => stepProject(1));
 
 document.getElementById('lightbox-close').addEventListener('click', () => {
   lightbox.classList.remove('open');
@@ -121,7 +142,10 @@ lightbox.addEventListener('click', (e) => {
   if (e.target === lightbox) lightbox.classList.remove('open');
 });
 document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
   if (e.key === 'Escape') lightbox.classList.remove('open');
+  if (e.key === 'ArrowLeft') stepProject(-1);
+  if (e.key === 'ArrowRight') stepProject(1);
 });
 
 // ===== FAQ accordion =====
@@ -192,12 +216,16 @@ function applyWork() {
     const collapsed = workFilter === 'all' && !workExpanded && card.classList.contains('extra');
     card.classList.toggle('hidden', !matches || collapsed);
   });
-  if (moreWrap) moreWrap.style.display = (workFilter === 'all' && !workExpanded) ? 'block' : 'none';
+  if (moreWrap) moreWrap.style.display = (workFilter === 'all') ? 'block' : 'none';
+  if (moreBtn) moreBtn.textContent = workExpanded ? 'See less' : 'View all ' + workCards.length + ' projects';
 }
 
 if (moreBtn) {
-  moreBtn.textContent = 'View all ' + workCards.length + ' projects';
-  moreBtn.addEventListener('click', () => { workExpanded = true; applyWork(); });
+  moreBtn.addEventListener('click', () => {
+    workExpanded = !workExpanded;
+    applyWork();
+    if (!workExpanded) document.getElementById('work').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 }
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -226,3 +254,16 @@ if (fab && contactSec) {
 // Show the embedded JurisGenius thumbnail on its card
 const jgImg = document.querySelector('[data-project="jurisgenius"] img');
 if (jgImg) jgImg.src = JG_IMG;
+
+// ===== Reading progress line =====
+const progressBar = document.getElementById('progress');
+if (progressBar) {
+  const setProgress = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    progressBar.style.transform = 'scaleX(' + pct + ')';
+  };
+  window.addEventListener('scroll', setProgress, { passive: true });
+  window.addEventListener('resize', setProgress);
+  setProgress();
+}

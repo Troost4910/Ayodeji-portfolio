@@ -311,3 +311,25 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 
 /* ============ View all work ============ */
 .work-more{ text-align:center; margin-top:36px; }
+
+/* ============ Reading progress line ============ */
+.progress{
+  position:fixed; top:0; left:0; right:0; height:2px; z-index:120;
+  background:var(--ink); transform:scaleX(0); transform-origin:left; pointer-events:none;
+}
+
+/* ============ Lightbox prev / next ============ */
+.lightbox-body{ position:relative; }
+.lightbox-nav{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:26px; padding-top:18px; border-top:1px solid var(--line);
+}
+.lightbox-nav button{
+  background:none; border:0; font-size:14px; font-weight:600; color:var(--ink); padding:6px 2px;
+}
+.lightbox-nav button:hover{ color:var(--graphite); }
+.lightbox-nav span{ font-size:13px; color:var(--graphite); }
+
+/* ============ Platform icons ============ */
+.chip .platform{ display:flex; align-items:center; gap:10px; }
+.plat-icon{ width:22px; height:22px; flex:none; color:var(--ink); }
