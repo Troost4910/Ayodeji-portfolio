@@ -343,7 +343,7 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 }
 .hx-text{
   position:relative; z-index:3; max-width: 56%;
-  padding: 56px 0 56px max(28px, calc((100vw - 1120px) / 2 + 24px)); min-height: var(--hx-h);
+  padding: 56px 0 56px clamp(28px, 4.5vw, 72px); min-height: var(--hx-h);
   display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
 }
 .hx-eyebrow{
@@ -353,7 +353,7 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 .hx h1{
   font-family:'Anton','Bebas Neue',Impact,'Arial Narrow',sans-serif;
   font-weight:400; text-transform:uppercase; letter-spacing:.005em;
-  font-size: clamp(3.2rem, 7.4vw, 6.4rem); line-height:.95; color:var(--white);
+  font-size: clamp(3.2rem, 7.4vw, 7.4rem); line-height:.95; color:var(--white);
 }
 .hx-text p{ color:#d3cfc6; font-size:17px; max-width:34ch; margin:26px 0 30px; }
 .hx-btn{
@@ -376,7 +376,16 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
   padding:34px 28px 24px; display:flex; flex-direction:column; justify-content:space-between; gap:28px;
 }
 .hx-label{ font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--graphite); }
-.hx-side-title{ font-family:var(--font-display); font-size:1.5rem; line-height:1.2; margin:12px 0 24px; }
+.hx-side-title{ font-family:var(--font-display); font-size:1.45rem; line-height:1.2; margin:12px 0 18px; }
+.hx-list{ margin:0 0 22px; border-top:1px solid var(--line); }
+.hx-list li{ border-bottom:1px solid var(--line); }
+.hx-list a{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 2px; font-size:14px; font-weight:500; color:var(--ink);
+  transition: padding .2s var(--ease), color .2s var(--ease);
+}
+.hx-list a span{ color:var(--graphite); }
+.hx-list a:hover{ padding-left:8px; color:var(--graphite); }
 .hx-quote{ margin:0; background:var(--paper-dim); border-radius:4px; padding:18px 18px 16px; }
 .hx-quote p{ font-size:13.5px; line-height:1.5; margin:0 0 14px; color:var(--ink-soft); }
 .hx-quote figcaption{ display:flex; flex-direction:column; font-size:12.5px; }
