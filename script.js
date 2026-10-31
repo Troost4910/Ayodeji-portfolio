@@ -73,6 +73,13 @@ const PROJECTS = {
     img: JG_IMG,
     link: "https://jgs-awesome-site.webflow.io/"
   },
+  aivoice: {
+    title: "AI Voice Receptionist",
+    tags: ["AI Voice", "Vapi", "n8n", "Demo project"],
+    desc: "A voice receptionist for an HVAC business that answers calls, collects customer details, checks live Google Calendar availability and books appointments, with separate handling for urgent requests, installations and callers who want a human.",
+    img: "assets/work-aivoice.jpg",
+    link: "work/ai-voice-receptionist.html"
+  },
   callivate: {
     title: "Callivate",
     tags: ["Framer", "Client project", "Fitness / Wellness"],
@@ -101,7 +108,7 @@ function renderProject() {
   lbDesc.textContent = p.desc;
   lbMeta.innerHTML = p.tags.map(t => `<span class="work-tag">${t}</span>`).join('');
   lbLink.href = p.link;
-  lbLink.textContent = key === 'jemsocial' ? 'Read the full case study →' : 'View live site →';
+  lbLink.textContent = p.link.indexOf('work/') === 0 ? 'Read the full case study →' : 'View live site →';
   if (p.img) {
     lbImg.style.display = 'block';
     lbImg.innerHTML = `<img src="${p.img}" alt="${p.title}">`;

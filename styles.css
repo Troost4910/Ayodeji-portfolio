@@ -401,3 +401,8 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
   }
   .hx-side{ position:relative; top:auto; right:auto; bottom:auto; width:auto; margin:0 14px 14px; z-index:2; }
 }
+
+/* ============ Case study figures ============ */
+.case-fig{ margin:0 0 8px; }
+.case-fig img{ width:100%; height:auto; border:1px solid var(--line); border-radius:4px; display:block; }
+.case-fig figcaption{ font-size:13px; color:var(--graphite); margin-top:10px; }
