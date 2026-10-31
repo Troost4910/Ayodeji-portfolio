@@ -333,3 +333,61 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 /* ============ Platform icons ============ */
 .chip .platform{ display:flex; align-items:center; gap:10px; }
 .plat-icon{ width:22px; height:22px; flex:none; color:var(--ink); }
+
+/* ============ New hero (split layout) ============ */
+.hx{ padding: 24px 0 40px; }
+.hx-card{
+  position:relative; min-height: 620px; overflow:hidden;
+  background: var(--ink); color: var(--white); border-radius: 6px;
+}
+.hx-text{
+  position:relative; z-index:3; max-width: 56%;
+  padding: 56px 0 56px 56px; min-height: 620px;
+  display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
+}
+.hx-eyebrow{
+  font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:600;
+  color:#bdb9b0; margin-bottom:22px;
+}
+.hx h1{
+  font-family:'Anton','Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  font-weight:400; text-transform:uppercase; letter-spacing:.005em;
+  font-size: clamp(3.2rem, 7.4vw, 6.4rem); line-height:.95; color:var(--white);
+}
+.hx-text p{ color:#d3cfc6; font-size:17px; max-width:34ch; margin:26px 0 30px; }
+.hx-btn{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--white); color:var(--ink); border-radius:999px;
+  padding:14px 26px; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  transition: background .2s var(--ease);
+}
+.hx-btn:hover{ background:#e9e6df; }
+.hx-proof{ margin-top:34px; font-size:13px; color:#bdb9b0; }
+.hx-photo{
+  position:absolute; z-index:1; top:0; bottom:0; left:33%; width:38%; height:100%;
+  object-fit:cover; object-position:center top; filter: grayscale(100%) contrast(1.05);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 28%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 28%);
+}
+.hx-side{
+  position:absolute; z-index:2; top:14px; right:14px; bottom:14px; width:29%;
+  background:var(--paper); color:var(--ink); border-radius:4px;
+  padding:34px 28px 24px; display:flex; flex-direction:column; justify-content:space-between; gap:28px;
+}
+.hx-label{ font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--graphite); }
+.hx-side-title{ font-family:var(--font-display); font-size:1.5rem; line-height:1.2; margin:12px 0 24px; }
+.hx-quote{ margin:0; background:var(--paper-dim); border-radius:4px; padding:18px 18px 16px; }
+.hx-quote p{ font-size:13.5px; line-height:1.5; margin:0 0 14px; color:var(--ink-soft); }
+.hx-quote figcaption{ display:flex; flex-direction:column; font-size:12.5px; }
+.hx-quote figcaption span{ color:var(--graphite); }
+
+@media (max-width: 960px){
+  .hx-card{ display:flex; flex-direction:column; min-height:0; }
+  .hx-text{ max-width:100%; padding:44px 28px 20px; min-height:0; }
+  .hx-photo{
+    position:relative; left:auto; top:auto; bottom:auto; width:100%; height:420px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+  }
+  .hx-side{ position:relative; top:auto; right:auto; bottom:auto; width:auto; margin:0 14px 14px; z-index:2; }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://troost4910.github.io/Ayodeji-portfolio/sitemap.xml
