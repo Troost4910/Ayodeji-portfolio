@@ -335,14 +335,15 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 .plat-icon{ width:22px; height:22px; flex:none; color:var(--ink); }
 
 /* ============ New hero (split layout) ============ */
-.hx{ padding: 24px 0 40px; }
+.hx{ --hx-h: clamp(600px, calc(100svh - 72px), 800px); padding:0; }
+.hx > .container{ max-width:none; padding:0; }
 .hx-card{
-  position:relative; min-height: 620px; overflow:hidden;
-  background: var(--ink); color: var(--white); border-radius: 6px;
+  position:relative; min-height: var(--hx-h); overflow:hidden;
+  background: var(--ink); color: var(--white); border-radius: 0;
 }
 .hx-text{
   position:relative; z-index:3; max-width: 56%;
-  padding: 56px 0 56px 56px; min-height: 620px;
+  padding: 56px 0 56px max(28px, calc((100vw - 1120px) / 2 + 24px)); min-height: var(--hx-h);
   display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
 }
 .hx-eyebrow{
@@ -366,11 +367,11 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 .hx-photo{
   position:absolute; z-index:1; top:0; bottom:0; left:33%; width:38%; height:100%;
   object-fit:cover; object-position:center top; filter: grayscale(100%) contrast(1.05);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 28%);
-          mask-image: linear-gradient(to right, transparent 0%, #000 28%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 28%, #000 80%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 28%, #000 80%, transparent 100%);
 }
 .hx-side{
-  position:absolute; z-index:2; top:14px; right:14px; bottom:14px; width:29%;
+  position:absolute; z-index:2; top:18px; right:18px; bottom:18px; width:28%; max-width:420px;
   background:var(--paper); color:var(--ink); border-radius:4px;
   padding:34px 28px 24px; display:flex; flex-direction:column; justify-content:space-between; gap:28px;
 }
