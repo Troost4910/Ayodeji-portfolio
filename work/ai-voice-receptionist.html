@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Voice Receptionist for an HVAC Company — Case Study | Ayodeji Bright</title>
+<meta name="description" content="An AI voice receptionist built with Vapi, n8n and Google Calendar that answers calls, checks live availability and books appointments for an HVAC business.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand">Ayodeji Bright</a>
+    <div class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#ai-voice">AI Voice</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:48px;">
+  <div class="container" style="max-width:760px;">
+    <span class="eyebrow">Case Study · AI Voice Automation</span>
+    <h1 style="margin-top:14px; font-size:clamp(2rem,4.5vw,3rem);">An AI voice receptionist that books HVAC appointments.</h1>
+    <p style="color:var(--graphite); font-size:18px; max-width:60ch; margin-top:20px;">A voice agent that answers customer calls, understands the service request, checks live availability and books the appointment, built with Vapi, n8n and Google Calendar.</p>
+  </div>
+</header>
+
+<section class="border-top">
+  <div class="container" style="max-width:760px;">
+    <div class="process-grid" style="grid-template-columns:repeat(3,1fr); margin-bottom:56px;">
+      <div class="process-step"><span class="idx">Voice</span><h3 style="font-size:16px;">Vapi</h3></div>
+      <div class="process-step"><span class="idx">Automation</span><h3 style="font-size:16px;">n8n + webhooks</h3></div>
+      <div class="process-step"><span class="idx">Calendar</span><h3 style="font-size:16px;">Google Calendar</h3></div>
+    </div>
+
+    <h2 style="font-size:1.6rem; margin-bottom:16px;">What it does</h2>
+    <p style="color:var(--ink-soft); margin-bottom:16px;">For a home service business, a missed call is often a missed job. This receptionist picks up incoming calls and handles the conversation from start to finish:</p>
+    <ul class="specialize" style="margin:0 0 40px;">
+      <li>Understands why the customer is calling</li>
+      <li>Collects the customer's details</li>
+      <li>Checks real-time availability</li>
+      <li>Automatically books eligible appointments</li>
+    </ul>
+
+    <h2 style="font-size:1.6rem; margin-bottom:16px;">How it works</h2>
+    <p style="color:var(--ink-soft); margin-bottom:24px;">Vapi runs the voice conversation. When the caller is ready to book, it sends the request to n8n through a webhook. n8n pulls the day's events from Google Calendar, applies the scheduling rules in a code step, and an IF step decides whether the slot is free. If it is, the event is created and the confirmation goes back to the caller. If not, the agent gets a response it can use to offer another time.</p>
+    <figure class="case-fig">
+      <img src="../assets/aivoice-n8n.jpg" alt="n8n workflow: webhook, Google Calendar availability check, code step, IF, create event, respond to webhook" loading="lazy" decoding="async">
+      <figcaption>The n8n booking workflow.</figcaption>
+    </figure>
+
+    <h2 style="font-size:1.6rem; margin:40px 0 16px;">Scheduling logic</h2>
+    <p style="color:var(--ink-soft); margin-bottom:16px;">The scheduling is built around a three-technician team and covers:</p>
+    <ul class="specialize" style="margin:0 0 24px;">
+      <li>Business-hour rules</li>
+      <li>Appointment capacity checks</li>
+      <li>A final availability re-check right before booking, to help prevent scheduling conflicts</li>
+    </ul>
+    <figure class="case-fig">
+      <img src="../assets/aivoice-calendar.jpg" alt="Google Calendar day view showing test bookings for three technicians in the same time slot" loading="lazy" decoding="async">
+      <figcaption>Test bookings across all three technicians in Google Calendar.</figcaption>
+    </figure>
+
+    <h2 style="font-size:1.6rem; margin:40px 0 16px;">Not every call is the same</h2>
+    <p style="color:var(--ink-soft); margin-bottom:24px;">The receptionist handles urgent service requests, installation enquiries and customers who ask for a human, and sends each one through the right workflow instead of treating every call the same way.</p>
+    <figure class="case-fig">
+      <img src="../assets/aivoice-vapi.jpg" alt="Vapi assistant configuration showing transcriber, model, voice and system prompt" loading="lazy" decoding="async">
+      <figcaption>The Vapi assistant: transcriber, model, voice and system prompt.</figcaption>
+    </figure>
+
+    <p style="color:var(--graphite); font-size:14px; margin:36px 0 32px;">This is a demo build for a sample HVAC business, ComfortAir Heating &amp; Cooling. Tools: Vapi · n8n · Google Calendar · Webhooks · API integration.</p>
+
+    <a href="../index.html#contact" class="btn btn-primary">Want a voice agent for your business?</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="footer-copy">© 2026 Ayodeji Bright. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

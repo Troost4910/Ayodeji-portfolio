@@ -406,3 +406,28 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 .case-fig{ margin:0 0 8px; }
 .case-fig img{ width:100%; height:auto; border:1px solid var(--line); border-radius:4px; display:block; }
 .case-fig figcaption{ font-size:13px; color:var(--graphite); margin-top:10px; }
+
+/* ============ Hero side panel: no white background ============ */
+.hx-side{
+  background: transparent; color: var(--white); border-radius:0;
+  border-left:1px solid rgba(255,255,255,.14);
+  top:0; right:0; bottom:0; width:28%; max-width:440px;
+  padding:40px 36px 36px 32px;
+}
+.hx-label{ color:#bdb9b0; }
+.hx-side-title{ color:var(--white); }
+.hx-list{ border-top:1px solid rgba(255,255,255,.18); }
+.hx-list li{ border-bottom:1px solid rgba(255,255,255,.18); }
+.hx-list a{ color:var(--white); }
+.hx-list a span{ color:#bdb9b0; }
+.hx-list a:hover{ color:#bdb9b0; }
+.hx-side .btn-primary{ background:var(--white); color:var(--ink); border-color:var(--white); }
+.hx-side .btn-primary:hover{ background:#e9e6df; }
+.hx-quote{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); }
+.hx-quote p{ color:#d3cfc6; }
+.hx-quote figcaption strong{ color:var(--white); }
+.hx-quote figcaption span{ color:#bdb9b0; }
+
+@media (max-width: 960px){
+  .hx-side{ border-left:0; border-top:1px solid rgba(255,255,255,.14); margin:0 28px; width:auto; max-width:none; padding:28px 0 36px; }
+}
