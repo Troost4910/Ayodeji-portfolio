@@ -529,3 +529,87 @@ footer{ padding-bottom:0; overflow:hidden; }
   .hx-text > *, .hx-photo, .hx-side, .reveal.in .stagger{ animation:none; }
   .hx-open i{ animation:none; }
 }
+
+/* ============================================
+   Premium pass
+   ============================================ */
+
+/* Stats */
+.stat .num{ font-size:34px; letter-spacing:-.01em; }
+.stat .label{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; margin-top:8px; }
+
+/* Services: numbered cards that invert on hover */
+.services-grid{ counter-reset: svc; }
+.service-card{ counter-increment: svc; transition: background .3s var(--ease), color .3s var(--ease); }
+.service-card::before{
+  content:"0" counter(svc); display:block; margin-bottom:22px;
+  font-family:var(--font-display); font-size:14px; color:var(--graphite); transition: color .3s var(--ease);
+}
+.service-card h3{ font-size:21px; }
+.service-card:hover{ background:var(--ink); color:var(--white); }
+.service-card:hover::before, .service-card:hover p, .service-card:hover ul li, .service-card:hover ul li::before{ color:#bdb9b0; }
+.service-card:hover h3{ color:var(--white); }
+
+/* Process + industries: big numerals with a top rule */
+.p-premium .process-step{ border-top:1px solid var(--ink); padding-top:22px; }
+.p-premium .process-step .idx{ display:block; font-family:var(--font-display); font-size:2.4rem; line-height:1; color:var(--ink); margin-bottom:14px; }
+.p-premium .process-step h3{ font-size:19px; }
+
+/* Why work with me (dark band) */
+.why-band{ background:var(--ink); color:var(--white); }
+.why-band .eyebrow{ color:#bdb9b0; }
+.why-band .section-head p{ color:#bdb9b0; }
+.why-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:48px; }
+.why-item{ border-top:1px solid rgba(255,255,255,.2); padding-top:26px; display:flex; flex-direction:column; }
+.why-item .idx{ font-family:var(--font-display); font-size:2.4rem; line-height:1; color:var(--white); margin-bottom:16px; }
+.why-item h3{ font-size:21px; margin-bottom:10px; color:var(--white); }
+.why-item p{ color:#bdb9b0; font-size:14.5px; margin:0 0 22px; }
+.why-item blockquote{
+  margin:0; padding:4px 0 4px 18px; border-left:1px solid rgba(255,255,255,.3);
+  font-size:13.5px; line-height:1.55; color:#d3cfc6;
+}
+.why-item blockquote cite{ display:block; margin-top:10px; font-style:normal; font-size:12px; color:#8f8b83; letter-spacing:.04em; }
+.why-btn{ margin-top:56px; background:var(--white); color:var(--ink); border-color:var(--white); }
+.why-btn:hover{ background:#e9e6df; }
+@media (max-width:860px){ .why-grid{ grid-template-columns:1fr; gap:40px; } }
+
+/* Work cards: lift on hover */
+.work-card{ transition: border-color .2s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease); }
+.work-card:hover{ transform:translateY(-4px); box-shadow:0 16px 36px rgba(17,17,16,.1); }
+
+/* Reviews: quote mark */
+.testimonial-card::before{ content:"\201C"; font-family:var(--font-display); font-size:48px; line-height:.8; color:var(--line); display:block; margin-bottom:10px; }
+
+/* ============================================
+   Footer: full layout with large faded name behind the links
+   ============================================ */
+footer{ position:relative; overflow:hidden; padding:80px 0 0; border-top:1px solid var(--line); }
+.footer-main{ position:relative; padding-bottom:150px; }
+.footer-cols{ position:relative; z-index:2; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px; }
+.footer-brand .brand{ font-size:20px; }
+.footer-brand p{ color:var(--graphite); font-size:14.5px; max-width:34ch; margin:14px 0 0; }
+.footer-cols h4{ font-family:var(--font-body); font-size:16px; font-weight:700; margin:0 0 18px; letter-spacing:0; }
+.footer-cols ul li{ margin-bottom:11px; }
+.footer-cols ul a{ color:var(--graphite); font-size:15px; transition: color .2s var(--ease); }
+.footer-cols ul a:hover{ color:var(--ink); }
+.footer-name{
+  position:absolute; left:50%; bottom:0; transform:translateX(-50%); z-index:1;
+  font-family:var(--font-body); font-weight:700; text-transform:none; letter-spacing:-.04em;
+  font-size:min(13.5vw, 210px); line-height:1; white-space:nowrap; text-align:center; margin:0; padding:0;
+  background:none; -webkit-background-clip:border-box; background-clip:border-box;
+  color:rgba(17,17,16,.055); user-select:none; pointer-events:none;
+}
+.footer-bar{
+  position:relative; z-index:2; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  border-top:1px solid var(--line); padding:20px 24px 24px; font-size:13px; color:var(--graphite);
+}
+.footer-bar a:hover{ color:var(--ink); }
+@media (max-width:860px){
+  .footer-cols{ grid-template-columns:1fr 1fr; gap:36px; }
+  .footer-brand{ grid-column:1 / -1; }
+  .footer-main{ padding-bottom:90px; }
+  .footer-name{ font-size:19vw; }
+}
+
+/* Floating button stays visible on dark sections */
+.fab{ border:1px solid rgba(255,255,255,.35); }
