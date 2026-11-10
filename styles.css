@@ -431,3 +431,101 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 @media (max-width: 960px){
   .hx-side{ border-left:0; border-top:1px solid rgba(255,255,255,.14); margin:0 28px; width:auto; max-width:none; padding:28px 0 36px; }
 }
+
+/* ============================================
+   Loading screen
+   ============================================ */
+.preloader{
+  position:fixed; inset:0; z-index:300; background:var(--ink);
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  animation: preOut .5s var(--ease) 1.25s forwards;
+}
+.pre-inner{ display:flex; flex-direction:column; align-items:center; padding:0 24px; }
+.pre-welcome{
+  font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#bdb9b0; font-weight:600;
+  opacity:0; animation: fadeUp .5s var(--ease) .1s forwards;
+}
+.pre-name{
+  font-family:var(--font-display); font-size:clamp(1.9rem, 5vw, 3rem); color:var(--white); margin-top:12px;
+  opacity:0; animation: fadeUp .6s var(--ease) .25s forwards;
+}
+.pre-line{
+  display:block; height:1px; width:0; background:rgba(255,255,255,.55); margin-top:22px;
+  animation: preLine .8s var(--ease) .45s forwards;
+}
+@keyframes preOut{ to{ opacity:0; visibility:hidden; } }
+@keyframes preLine{ to{ width:120px; } }
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+@keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
+.skip-pre .preloader{ display:none; }
+
+/* ============================================
+   Small animations
+   ============================================ */
+/* Hero entrance (starts after the loading screen) */
+.hx-text > *{ animation: fadeUp .7s var(--ease) both; animation-delay: calc(1.15s + var(--i, 0) * .09s); }
+.hx-text > *:nth-child(1){ --i:0; } .hx-text > *:nth-child(2){ --i:1; } .hx-text > *:nth-child(3){ --i:2; }
+.hx-text > *:nth-child(4){ --i:3; } .hx-text > *:nth-child(5){ --i:4; } .hx-text > *:nth-child(6){ --i:5; }
+.hx-photo{ animation: fadeIn 1s ease both; animation-delay: 1.15s; }
+.hx-side{ animation: fadeIn .9s ease both; animation-delay: 1.4s; }
+.skip-pre .hx-text > *{ animation-delay: calc(var(--i, 0) * .09s); }
+.skip-pre .hx-photo{ animation-delay: 0s; }
+.skip-pre .hx-side{ animation-delay: .25s; }
+
+/* "Open to new projects" tag */
+.hx-open{
+  display:inline-flex; align-items:center; gap:9px; margin-bottom:18px;
+  border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:6px 14px 6px 12px;
+  font-size:12px; font-weight:500; color:var(--white);
+}
+.hx-open i{ width:7px; height:7px; border-radius:50%; background:var(--white); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(255,255,255,.55); } 70%{ box-shadow:0 0 0 8px rgba(255,255,255,0); } 100%{ box-shadow:0 0 0 0 rgba(255,255,255,0); } }
+
+/* Staggered fade-up for grids when their section scrolls in */
+.reveal:not(.in) .stagger{ opacity:0; }
+.reveal.in .stagger{ animation: fadeUp .6s var(--ease) both; animation-delay: calc(var(--d, 0) * 70ms); }
+
+/* Hover touches */
+.btn{ transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease); }
+.btn:hover{ transform: translateY(-2px); }
+.hx-btn:hover{ transform: translateY(-2px); }
+.work-thumb img{ transition: filter .3s var(--ease), transform .5s var(--ease); }
+.work-card:hover .work-thumb img{ transform: scale(1.03); }
+.chip{ transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease); }
+.chip:hover{ transform: translateY(-3px); background:var(--ink); color:var(--white); }
+.chip:hover p{ color:#d3cfc6; }
+.nav-links a{ position:relative; }
+.nav-links a::after{
+  content:""; position:absolute; left:0; bottom:-4px; height:1px; width:0; background:var(--ink);
+  transition: width .25s var(--ease);
+}
+.nav-links a:hover::after{ width:100%; }
+.service-card{ transition: background .25s var(--ease); }
+.service-card:hover{ background:var(--paper-dim); }
+
+/* Reviews: service label */
+.testimonial-svc{
+  margin-top:12px; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--graphite); font-weight:600;
+}
+
+/* ============================================
+   Footer: large faded name
+   ============================================ */
+footer{ padding-bottom:0; overflow:hidden; }
+.footer-name{
+  font-family:'Anton','Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  text-transform:uppercase; white-space:nowrap; text-align:center;
+  font-size: 15vw; line-height:.82; margin-top:28px; padding-bottom:0;
+  background: linear-gradient(to bottom, rgba(17,17,16,.2) 0%, rgba(17,17,16,0) 92%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  user-select:none; pointer-events:none;
+}
+.footer-copy{ margin-bottom:8px; }
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce){
+  .preloader{ display:none; }
+  .hx-text > *, .hx-photo, .hx-side, .reveal.in .stagger{ animation:none; }
+  .hx-open i{ animation:none; }
+}

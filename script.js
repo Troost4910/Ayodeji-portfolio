@@ -69,7 +69,7 @@ const PROJECTS = {
   jurisgenius: {
     title: "JurisGenius",
     tags: ["Webflow", "Client project", "Legal SaaS"],
-    desc: "A marketing site for an AI contract-review tool: a risk-ranked product preview in the hero, a features grid, tiered pricing, and a resources section, built to take legal teams from first look to free trial.",
+    desc: "A landing page for an AI contract-review tool: a risk-ranked product preview in the hero, a features grid, tiered pricing, and a resources section, built to take legal teams from first look to free trial.",
     img: JG_IMG,
     link: "https://jgs-awesome-site.webflow.io/"
   },
@@ -274,3 +274,11 @@ if (progressBar) {
   window.addEventListener('resize', setProgress);
   setProgress();
 }
+
+// ===== Small stagger animation for grids =====
+['.services-grid > *', '.process-grid > *', '.testimonial-grid > *', '.work-grid > *', '.chip-row > *'].forEach(sel => {
+  document.querySelectorAll(sel).forEach((el, i) => {
+    el.classList.add('stagger');
+    el.style.setProperty('--d', Math.min(i, 8));
+  });
+});
