@@ -120,9 +120,38 @@
   <div class="pre-inner">
     <span class="pre-welcome">Welcome to</span>
     <span class="pre-name">Ayodeji&rsquo;s Portfolio</span>
-    <span class="pre-line"></span>
+    <div class="pre-meter"><span class="pre-bar"><i></i></span><span class="pre-pct">0%</span></div>
   </div>
 </div>
+<script>
+(function(){
+  var html=document.documentElement, pre=document.getElementById('preloader');
+  if(!pre||html.classList.contains('skip-pre')) return;
+  var bar=pre.querySelector('.pre-bar i'), pct=pre.querySelector('.pre-pct');
+  var MIN=1400, MAX=4500, t0=Date.now(), shown=0, finished=false;
+  var got={dom:false,fonts:false,img:false,load:false}, W={dom:25,fonts:30,img:20,load:25};
+  function target(){var t=0,k;for(k in got){if(got[k]){t+=W[k];}}return t;}
+  function finish(){ if(finished)return; finished=true; pre.classList.add('done'); html.classList.add('pre-done'); }
+  function tick(){
+    var el=Date.now()-t0, cap=Math.min(100,(el/MIN)*100), base=target(), creep=(base<100)?Math.min(12,el/500):0, goal=Math.min(base+creep,cap,(base<100)?96:100);
+    if(el>=MAX){goal=100;}
+    shown+=(goal-shown)*0.18; if(goal-shown<0.5){shown=goal;}
+    bar.style.transform='scaleX('+(shown/100)+')'; pct.textContent=Math.round(shown)+'%';
+    if(shown>=100){ setTimeout(finish,200); return; }
+    requestAnimationFrame(tick);
+  }
+  function onDom(){
+    got.dom=true;
+    if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){got.fonts=true;});}else{got.fonts=true;}
+    var img=document.querySelector('.hx-photo');
+    if(!img||img.complete){got.img=true;}else{img.addEventListener('load',function(){got.img=true;});img.addEventListener('error',function(){got.img=true;});}
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',onDom);}else{onDom();}
+  if(document.readyState==='complete'){got.load=true;}else{window.addEventListener('load',function(){got.load=true;});}
+  requestAnimationFrame(tick);
+})();
+</script>
+<noscript><style>.preloader{display:none}</style></noscript>
 <div class="progress" id="progress"></div>
 
 <nav class="nav">
@@ -566,49 +595,19 @@
 
 <footer>
   <div class="footer-main">
-    <div class="container footer-cols">
-      <div class="footer-brand">
-        <span class="brand">Ayodeji Bright</span>
-        <p>Webflow developer and designer based in Lagos, Nigeria. Websites, landing pages and AI voice receptionists for growing businesses.</p>
+    <div class="container">
+      <div class="footer-row">
+        <span class="brand" style="font-size:16px;">Ayodeji Bright</span>
+        <div class="footer-links">
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </div>
       </div>
-      <div>
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#ai-voice">AI Voice</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#services">Webflow development</a></li>
-          <li><a href="#services">Figma-to-Webflow</a></li>
-          <li><a href="#services">CMS &amp; integrations</a></li>
-          <li><a href="#platforms">Framer, Carrd &amp; FlutterFlow</a></li>
-          <li><a href="#ai-voice">AI voice automation</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Connect</h4>
-        <ul>
-          <li><a href="mailto:ayodejibright58@gmail.com">Email</a></li>
-          <li><a href="https://wa.me/2348079974050?text=Hi%20Ayodeji%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="https://www.linkedin.com/in/ayodeji-bright4910" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://www.upwork.com/freelancers/~01f3ac4145794518e3" target="_blank" rel="noopener">Upwork</a></li>
-          <li><a href="https://www.fiverr.com/ayo_dejiweb" target="_blank" rel="noopener">Fiverr</a></li>
-          <li><a href="https://x.com/Troost11229" target="_blank" rel="noopener">X / Twitter</a></li>
-        </ul>
-      </div>
+      <p class="footer-copy">© 2026 Ayodeji Bright. All rights reserved.</p>
     </div>
     <div class="footer-name" aria-hidden="true">Ayodeji Bright</div>
-  </div>
-  <div class="container footer-bar">
-    <span>&copy; 2026 Ayodeji Bright. All rights reserved.</span>
-    <a href="#top">Back to top &uarr;</a>
   </div>
 </footer>
 

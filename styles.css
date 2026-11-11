@@ -433,13 +433,15 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 }
 
 /* ============================================
-   Loading screen
+   Loading screen (driven by real loading progress)
    ============================================ */
 .preloader{
   position:fixed; inset:0; z-index:300; background:var(--ink);
   display:flex; align-items:center; justify-content:center; text-align:center;
-  animation: preOut .5s var(--ease) 1.25s forwards;
+  transition: opacity .5s var(--ease), visibility 0s linear .5s;
+  animation: preOut .4s ease 6s forwards; /* safety net if scripts fail */
 }
+.preloader.done{ opacity:0; visibility:hidden; }
 .pre-inner{ display:flex; flex-direction:column; align-items:center; padding:0 24px; }
 .pre-welcome{
   font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#bdb9b0; font-weight:600;
@@ -449,12 +451,11 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
   font-family:var(--font-display); font-size:clamp(1.9rem, 5vw, 3rem); color:var(--white); margin-top:12px;
   opacity:0; animation: fadeUp .6s var(--ease) .25s forwards;
 }
-.pre-line{
-  display:block; height:1px; width:0; background:rgba(255,255,255,.55); margin-top:22px;
-  animation: preLine .8s var(--ease) .45s forwards;
-}
+.pre-meter{ display:flex; align-items:center; gap:14px; margin-top:30px; width:min(280px, 72vw); opacity:0; animation: fadeIn .4s ease .4s forwards; }
+.pre-bar{ position:relative; flex:1; height:1px; background:rgba(255,255,255,.22); overflow:hidden; }
+.pre-bar i{ position:absolute; inset:0; background:var(--white); transform:scaleX(0); transform-origin:left; }
+.pre-pct{ width:40px; text-align:right; font-size:12px; color:#bdb9b0; font-variant-numeric:tabular-nums; letter-spacing:.04em; }
 @keyframes preOut{ to{ opacity:0; visibility:hidden; } }
-@keyframes preLine{ to{ width:120px; } }
 @keyframes fadeUp{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
 @keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
 .skip-pre .preloader{ display:none; }
@@ -462,15 +463,15 @@ footer{ border-top:1px solid var(--line); padding: 48px 0 28px; }
 /* ============================================
    Small animations
    ============================================ */
-/* Hero entrance (starts after the loading screen) */
-.hx-text > *{ animation: fadeUp .7s var(--ease) both; animation-delay: calc(1.15s + var(--i, 0) * .09s); }
+/* Hero entrance: starts when the loading screen finishes */
+.hx-text > *{ animation: fadeUp .7s var(--ease) both; animation-delay: 6s; }
 .hx-text > *:nth-child(1){ --i:0; } .hx-text > *:nth-child(2){ --i:1; } .hx-text > *:nth-child(3){ --i:2; }
 .hx-text > *:nth-child(4){ --i:3; } .hx-text > *:nth-child(5){ --i:4; } .hx-text > *:nth-child(6){ --i:5; }
-.hx-photo{ animation: fadeIn 1s ease both; animation-delay: 1.15s; }
-.hx-side{ animation: fadeIn .9s ease both; animation-delay: 1.4s; }
-.skip-pre .hx-text > *{ animation-delay: calc(var(--i, 0) * .09s); }
-.skip-pre .hx-photo{ animation-delay: 0s; }
-.skip-pre .hx-side{ animation-delay: .25s; }
+.hx-photo{ animation: fadeIn 1s ease both; animation-delay: 6s; }
+.hx-side{ animation: fadeIn .9s ease both; animation-delay: 6s; }
+.pre-done .hx-text > *, .skip-pre .hx-text > *{ animation-delay: calc(var(--i, 0) * .09s); }
+.pre-done .hx-photo, .skip-pre .hx-photo{ animation-delay: 0s; }
+.pre-done .hx-side, .skip-pre .hx-side{ animation-delay: .25s; }
 
 /* "Open to new projects" tag */
 .hx-open{
@@ -613,3 +614,12 @@ footer{ position:relative; overflow:hidden; padding:80px 0 0; border-top:1px sol
 
 /* Floating button stays visible on dark sections */
 .fab{ border:1px solid rgba(255,255,255,.35); }
+
+/* ============================================
+   Footer: original layout, plus large faded name behind
+   ============================================ */
+footer{ position:relative; overflow:hidden; padding:56px 0 0; border-top:1px solid var(--line); }
+.footer-main{ position:relative; padding-bottom:130px; }
+.footer-main .container{ position:relative; z-index:2; }
+.footer-name{ bottom:0; line-height:1.18; }
+@media (max-width:860px){ .footer-main{ padding-bottom:90px; } }
