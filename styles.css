@@ -677,3 +677,17 @@ footer{ position:relative; overflow:hidden; padding:56px 0 0; border-top:1px sol
 .contact-person strong{ display:block; font-size:15px; }
 .contact-person span{ font-size:13px; color:var(--graphite); }
 .ai-copy h2{ line-height:1.15; }
+
+/* ============================================
+   Illustrations
+   ============================================ */
+.process-visual{ position:sticky; top:110px; border-radius:6px; overflow:hidden; background:var(--ink); }
+.process-visual svg{ display:block; width:100%; height:auto; }
+@media (max-width:960px){ .process-visual{ position:relative; top:auto; max-width:460px; } }
+
+.why-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; }
+.why-top .idx{ margin-bottom:0; }
+.why-ico{ width:34px; height:34px; color:var(--white); opacity:.9; }
+
+.contact-illus{ margin-top:36px; }
+.contact-illus svg{ width:100%; max-width:420px; height:auto; display:block; }
