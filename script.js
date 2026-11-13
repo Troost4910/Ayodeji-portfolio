@@ -278,7 +278,7 @@ if (progressBar) {
 }
 
 // ===== Small stagger animation for grids =====
-['.services-grid > *', '.process-grid > *', '.testimonial-grid > *', '.work-grid > *', '.chip-row > *'].forEach(sel => {
+['.services-grid > *', '.svc-list > *', '.plat-grid > *', '.process-grid > *', '.testimonial-grid > *', '.work-grid > *', '.chip-row > *'].forEach(sel => {
   document.querySelectorAll(sel).forEach((el, i) => {
     el.classList.add('stagger');
     el.style.setProperty('--d', Math.min(i, 8));
