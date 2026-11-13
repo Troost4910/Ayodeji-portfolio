@@ -90,6 +90,7 @@ const PROJECTS = {
 };
 
 // ===== Lightbox =====
+if (document.getElementById('lightbox')) {
 const lightbox = document.getElementById('lightbox');
 const lbImg = document.getElementById('lightbox-img');
 const lbTitle = document.getElementById('lightbox-title');
@@ -154,6 +155,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') stepProject(-1);
   if (e.key === 'ArrowRight') stepProject(1);
 });
+}
 
 // ===== FAQ accordion =====
 document.querySelectorAll('.faq-item').forEach(item => {
@@ -248,10 +250,10 @@ applyWork();
 // ===== Floating "Hire me" button: show after scrolling past hero, hide at contact =====
 const fab = document.getElementById('fab');
 const contactSec = document.getElementById('contact');
-if (fab && contactSec) {
+if (fab) {
   const update = () => {
     const pastHero = window.scrollY > 600;
-    const atContact = contactSec.getBoundingClientRect().top < window.innerHeight * 0.8;
+    const atContact = contactSec ? contactSec.getBoundingClientRect().top < window.innerHeight * 0.8 : false;
     fab.classList.toggle('show', pastHero && !atContact);
   };
   window.addEventListener('scroll', update, { passive: true });
@@ -282,3 +284,17 @@ if (progressBar) {
     el.style.setProperty('--d', Math.min(i, 8));
   });
 });
+
+// ===== Mobile menu =====
+const navEl = document.getElementById('nav');
+const navToggle = document.getElementById('nav-toggle');
+if (navEl && navToggle) {
+  navToggle.addEventListener('click', () => {
+    const open = navEl.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navEl.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    navEl.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+}

@@ -2,16 +2,6 @@
 
 Plain HTML/CSS/JS, no build step needed.
 
-## Deploy to GitHub Pages (free, permanent)
+Pages: index.html (home), work.html (all projects), services.html (services, AI voice, process, FAQ), work/jem-social.html and work/ai-voice-receptionist.html (case studies).
 
-1. Create a new GitHub repo (e.g. `ayodeji-portfolio`).
-2. Upload everything in this folder to the repo (keep the `assets/` and `work/` folders as-is).
-3. In the repo: **Settings → Pages → Source → Deploy from a branch → main → / (root)**.
-4. Save. Your site goes live at `https://<your-username>.github.io/ayodeji-portfolio/` within a minute or two.
-5. Optional: add a custom domain in that same Pages settings screen once you own one.
-
-## Before going live
-
-- The Formspree form ID is already set in `index.html`. Submissions go to the email you used on formspree.io.
-- Swap the placeholder work-card links/screenshots for any additional real projects as you get them.
-- Double check every contact link (Fiverr, LinkedIn, Upwork, X) still points to the right place.
+Upload: extract the zip, open the folder, select everything inside it (Ctrl + A) and drag it into the GitHub upload page. Do not drag the outer folder.

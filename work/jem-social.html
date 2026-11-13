@@ -19,19 +19,25 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="../index.html" class="brand">Ayodeji Bright</a>
-    <div class="nav-links">
-      <a href="../index.html#work">Work</a>
-      <a href="../index.html#services">Services</a>
-      <a href="../index.html#contact">Contact</a>
+    <div class="nav-links" id="nav-links">
+      <a href="../work.html" class="active" aria-current="page">Work</a>
+      <a href="../services.html">Services</a>
+      <a href="../services.html#ai-voice">AI Voice</a>
+      <a href="../services.html#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a href="../index.html#contact" class="btn btn-primary">Start a project</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
 </nav>
 
 <header class="hero" style="padding-bottom:48px;">
   <div class="container" style="max-width:760px;">
+    <a href="../work.html" class="back-link">&larr; All work</a>
     <span class="eyebrow">Case Study</span>
     <h1 style="margin-top:14px; font-size:clamp(2rem,4.5vw,3rem);">Jem Social — scaling content with a 100-page programmatic build.</h1>
     <p style="color:var(--graphite); font-size:18px; max-width:60ch; margin-top:20px;">A structured Webflow CMS build designed to generate and manage 100 SEO-targeted pages without manual page-building.</p>
@@ -60,10 +66,23 @@
 </section>
 
 <footer>
-  <div class="container">
-    <p class="footer-copy">© 2026 Ayodeji Bright. All rights reserved.</p>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-row">
+        <span class="brand" style="font-size:16px;">Ayodeji Bright</span>
+        <div class="footer-links">
+          <a href="../index.html">Home</a>
+          <a href="../work.html">Work</a>
+          <a href="../services.html">Services</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 Ayodeji Bright. All rights reserved.</p>
+    </div>
+    <div class="footer-name" aria-hidden="true">Ayodeji Bright</div>
   </div>
 </footer>
 
+<script src="../script.js"></script>
 </body>
 </html>
