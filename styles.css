@@ -802,3 +802,28 @@ footer{ position:relative; overflow:hidden; padding:56px 0 0; border-top:1px sol
 .cta-light .cta-primary:hover{ background:var(--ink-soft); }
 .cta-light .cta-ghost{ color:var(--ink); border-color:var(--ink); }
 .cta-light .cta-ghost:hover{ background:var(--ink); color:var(--white); }
+
+/* ============================================
+   Reviews page
+   ============================================ */
+.reviews-page{ padding:64px 0 96px; }
+.rv-intro{ display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap; margin-bottom:44px; }
+.rv-intro p{ color:var(--graphite); max-width:46ch; margin:0; font-size:16px; }
+.rv-facts{ display:flex; gap:36px; }
+.rv-facts div{ display:flex; flex-direction:column; }
+.rv-facts strong{ font-family:var(--font-display); font-size:2rem; line-height:1; font-weight:500; }
+.rv-facts span{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--graphite); margin-top:8px; }
+.review-wall{ columns:2; column-gap:28px; }
+.review-card{ break-inside:avoid; margin:0 0 28px; background:var(--white); border:1px solid var(--line); border-radius:6px; overflow:hidden; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.review-card:hover{ transform:translateY(-3px); box-shadow:0 14px 32px rgba(17,17,16,.08); }
+.rv-bar{ display:flex; justify-content:space-between; padding:10px 16px; background:var(--paper-dim); border-bottom:1px solid var(--line); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--graphite); font-weight:600; }
+.review-card img{ display:block; width:100%; height:auto; }
+.review-card figcaption{ padding:12px 16px 14px; border-top:1px solid var(--line); }
+.rv-label{ display:block; font-size:12px; letter-spacing:.06em; text-transform:uppercase; font-weight:600; color:var(--ink); margin-bottom:6px; }
+.review-card details summary{ cursor:pointer; font-size:13px; color:var(--graphite); list-style:none; }
+.review-card details summary::-webkit-details-marker{ display:none; }
+.review-card details summary::after{ content:" +"; }
+.review-card details[open] summary::after{ content:" \2212"; }
+.review-card blockquote{ margin:12px 0 0; font-size:14px; line-height:1.6; color:var(--ink-soft); }
+.review-card blockquote cite{ display:block; margin-top:8px; font-style:normal; font-size:12.5px; color:var(--graphite); }
+@media (max-width:760px){ .review-wall{ columns:1; } }
